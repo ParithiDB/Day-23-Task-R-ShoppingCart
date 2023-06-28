@@ -3808,6 +3808,17 @@ textarea.form-control-lg {
   justify-content: space-between;
   padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
 }
+.navbar .navbar-expand-lg .navbar-light .bg-light {
+position: fixed;
+}
+
+.d-flex {
+  > .btn {
+    position: fixed;
+    top: 15px;
+    right: 30px;
+  }
+}
 .navbar > .container,
 .navbar > .container-fluid,
 .navbar > .container-sm,
@@ -4232,6 +4243,10 @@ textarea.form-control-lg {
   border: var(--bs-card-border-width) solid var(--bs-card-border-color);
   border-radius: var(--bs-card-border-radius);
   box-shadow: 1px 2px 3px grey;
+}
+.card:hover {
+  box-shadow: 3px 3px 3px grey;
+  cursor: pointer;
 }
 .card > hr {
   margin-right: 0;

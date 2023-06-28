@@ -33,7 +33,7 @@ added : false
 {
   name : "Bails",
 price : "5.00",
-img : "https://rukminim1.flixcart.com/image/850/1000/cricket-bail/g/m/5/flashing-zings-original-imae9xbz837nmbv5.jpeg?q=90",
+img : "https://contents.mediadecathlon.com/p1004845/0573cc055d0098b16548e0dcc62ba993/p1004845.jpg?format=auto&quality=70&f=350x0",
 sale : false,
 added : false
 },
@@ -63,6 +63,7 @@ added : false
 function App() {
 
   const [cardItems, setCardItems] = useState([]);
+  const [count, setCount] = useState(0);
   
 
   useEffect(() => {
@@ -81,9 +82,11 @@ function App() {
 
   return (
     <div className="App">
-    
+    <div className="stat">
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container px-4 px-lg-5">
+          <img width={50} height={50
+          } className='me-1' src='https://images.vexels.com/media/users/3/240076/isolated/preview/0e6c0d8799dc06d116bd376820a6b091-cricket-bat-player-cut-out.png' alt='icon'/>
             <a className="navbar-brand" href="#!">CricShop</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -117,6 +120,7 @@ function App() {
             </div>
         </div>
     </nav>
+    </div>
 
     <header className="sach py-5">
         <div className="container px-4 px-lg-5 my-5">
@@ -136,6 +140,8 @@ function App() {
           onClickCart={() => handleCart(d.name)}
             data={d}
             key={`${i}`}
+            count={count}
+            setCount={setCount}
           />
         ))}
       
