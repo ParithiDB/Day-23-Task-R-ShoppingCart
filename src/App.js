@@ -1,57 +1,83 @@
 import './App.css';
 import Cart from './Components/Cart/Cart';
+import React, { useState,useEffect} from 'react';
 
 const product = [{
   name : "Bat",
   price : "20.00",
   img : "https://commercebuild-175c7.kxcdn.com/cdn-d03d5231-5b2e278c.mysagestore.com/cf738e9579802e6b988bb225ca6bc00c/contents/2A23138C/thumbnail/big_2A23138-Kahuna-Lite-Shadow.jpg?quality=65g",
-  sale : true
+  sale : true,
+  added : false
 },
 {
   name : "Ball",
 price : "10.00",
 img : "https://assets.gqindia.com/photos/642a7596bbd5d6aa01c70d1f/1:1/w_1080,h_1080,c_limit/Cricket%20Ball.jpg",
-sale : true
+sale : true,
+added : false
 },
 {
   name : "Stumps",
 price : "30.25",
 img : "https://sportsmatik.com/uploads/matik-sports-corner/equipage/cricket-stumps_1599117233.jpg",
-sale : true
+sale : true,
+added : false
 },
 {
   name : "Helmet",
 price : "40.75",
 img : "https://cdn.shopify.com/s/files/1/0641/2366/6646/products/helmetgravity1.png?v=1669492711",
-sale : false
+sale : false,
+added : false
 },
 {
   name : "Bails",
 price : "5.00",
 img : "https://rukminim1.flixcart.com/image/850/1000/cricket-bail/g/m/5/flashing-zings-original-imae9xbz837nmbv5.jpeg?q=90",
-sale : false
+sale : false,
+added : false
 },
 {
   name : "Gloves",
 price : "35.00",
 img : "https://gmcricket.in/media/catalog/product/cache/757ea7d2b7282843694bdb6de7a23598/3/0/303-batting-gloves_4.jpg",
-sale : true
+sale : true,
+added : false
 },
 {
   name : "Pad",
 price : "15.50",
 img : "https://cdn.shopify.com/s/files/1/0549/4518/5838/products/TESTBLUE.jpg?v=1662790367",
-sale : true
+sale : true,
+added : false
 },
 {
   name : "Jersey",
 price : "60.00",
 img : "https://5.imimg.com/data5/ANDROID/Default/2022/6/GC/PA/SL/22964772/product-jpeg-500x500.jpg",
-sale : true
+sale : true,
+added : false
 }
 ];
 
 function App() {
+
+  const [cardItems, setCardItems] = useState([]);
+  
+
+  useEffect(() => {
+    setCardItems(product);
+  }, []);
+
+  const handleCart = (name) => {
+    const updatedItems = cardItems.map((item) => {
+      if (item.name === name) {
+        return { ...item, added: !item.added };
+      }
+      return item;
+    });
+    setCardItems(updatedItems);
+  };
 
   return (
     <div className="App">
@@ -104,11 +130,14 @@ function App() {
     <section className="py-5">
         <div className="container px-4 px-lg-5 mt-5">
             <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-   
-      {product.map((d, i) => (
-        <Cart data={d} key={`${i}`}/>
-      )
-        )}
+            
+            {cardItems.map((d, i) => (
+          <Cart
+          onClickCart={() => handleCart(d.name)}
+            data={d}
+            key={`${i}`}
+          />
+        ))}
       
 
       </div>

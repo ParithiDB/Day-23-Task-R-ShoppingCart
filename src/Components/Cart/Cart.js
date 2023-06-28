@@ -1,6 +1,9 @@
+
+
 import React from "react";
 
-function Cart({data = {}}) {
+function Cart({data = {},onClickCart}) {
+  const buttonClass = data.added ? "btn btn-outline-danger" : "btn btn-outline-success";
     return (
                     
                     <div className="col mb-5">
@@ -43,7 +46,11 @@ function Cart({data = {}}) {
                             </div>
                             
                             <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div className="text-center"><a className="btn btn-outline-dark mt-auto" href="#!">Add to cart</a></div>
+                                <div className="text-center">
+                                <button className={buttonClass} onClick={onClickCart}>
+        {data.added ? 'Remove from Cart' : 'Add to Cart'}
+      </button>
+                                </div>
                             </div>
                         </div>
                     </div>
